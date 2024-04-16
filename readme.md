@@ -4,18 +4,17 @@ docker-compose -f docker-compose-spark-kafka-mysql.yaml up -d
 docker-compose -f docker-compose-spark-kafka-mysql.yaml exec mysql bash -c 'mysql -u root -pdebezium'
 ```
 
-```sql
+
 SELECT user,host FROM mysql.user;
 
 CREATE DATABASE cdc;
 
 GRANT ALL ON cdc.* TO 'debezium'@'%';
 
-```sql
 FLUSH PRIVILEGES;
 
 SHOW databases;
-```
+
 
 ```bash
 docker-compose -f docker-compose-spark-kafka-mysql.yaml exec mysql bash -c 'mysql -u debezium -pdbz'
