@@ -54,4 +54,7 @@ docker-compose -f docker-compose-spark-kafka-mysql.yaml exec kafka /kafka/bin/ka
 
 
 
-docker exec -it 18fdb9d141bf bash -c 'spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0 /src/real_time_pipeline.py'
+```bash
+container_id=$(docker ps --filter "name=spark-master" --format "{{.ID}}")
+docker exec -it $container_id bash -c 'spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0 /src/real_time_pipeline.py'
+```
