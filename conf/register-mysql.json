@@ -1,0 +1,15 @@
+{"name": "data-connector-demo",
+    "config": {
+        "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+        "database.hostname": "mysql",
+        "database.port": "3306",
+        "database.user": "debezium",
+        "database.password": "dbz",
+        "topic.prefix": "dbserver1",
+        "database.server.id": "184054",
+        "database.include.list": "cdc",
+        "debezium.sink.kafka.topic": "debezium-mysql-events",
+        "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+        "schema.history.internal.kafka.topic": "schema-changes.data"
+    }
+}
