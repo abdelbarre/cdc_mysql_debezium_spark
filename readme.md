@@ -1,6 +1,9 @@
 # Change Data Capture (CDC) with Docker, Apache Kafka, Debezium, and Apache Spark Streaming
 
 ## Introduction
+
+![Architecture](./img/archi.gif)
+
 Change Data Capture (CDC) plays a vital role in data engineering by enabling real-time data integration and analysis. This article presents a comprehensive guide to setting up a CDC pipeline using Docker Compose, Apache Kafka, Debezium, and Apache Spark Streaming. The architecture involves capturing changes from a MySQL database, processing them with Debezium, publishing to Kafka, and subsequently analyzing the data with Spark Streaming.
 
 ## Components Overview
@@ -114,3 +117,6 @@ docker-compose -f docker-compose-spark-kafka-mysql.yaml exec kafka /kafka/bin/ka
 container_id=$(docker ps --filter "name=spark-master" --format "{{.ID}}")
 docker exec -it $container_id bash -c 'spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.0 /src/real_time_pipeline.py'
 ```
+
+
+
