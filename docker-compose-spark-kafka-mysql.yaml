@@ -38,6 +38,7 @@ services:
      - 2181:2181
      - 2888:2888
      - 3888:3888
+
   # ----------------- #
   #   apache Kafka    #
   # ----------------- #
@@ -50,6 +51,19 @@ services:
      - zookeeper
     environment:
      - ZOOKEEPER_CONNECT=zookeeper:2181
+
+  # ----------------- #
+  #    Kafka UI       #
+  # ----------------- #
+  kafka-ui:
+    container_name: kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 10000:10000
+    environment:
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    volumes:
+      - ./kui/config.yml:/etc/kafkaui/dynamic_config.yaml
   # ----------------- #
   #       Mysql       #
   # ----------------- #
@@ -63,7 +77,7 @@ services:
      - MYSQL_USER=mysqluser
      - MYSQL_PASSWORD=mysqlpw
   # ----------------- #
-  #     debezium      #
+  #     Debezium      #
   # ----------------- #
   connect:
     container_name: debezium

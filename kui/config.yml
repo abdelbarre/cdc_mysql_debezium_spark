@@ -1,0 +1,9 @@
+server:
+  port: 10000
+kafka:
+  clusters:
+    -
+      name: kafka
+      bootstrapServers: kafka:9092
+
+  
